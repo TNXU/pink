@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <meta name='apple-mobile-web-app-capable' content='yes' />
   <meta name='apple-mobile-web-app-status-bar-style' content='black' />
@@ -16,7 +16,7 @@
 <body onload="run();" leftmargin=0 topmargin=0 oncontextmenu='return false' ondragstart='return false' onselectstart='return false'
   onselect='document.selection.empty()' oncopy='document.selection.empty()' onbeforecopy='return false' onmouseup='document.selection.empty()'>
   <p id='animation'>DEMO DEMO DEMO</p>
-  <img id="background" alt="background" src="" />
+  <img id="background" src="" />
   <div id="canvasHolder">
     <canvas id="canvas"></canvas>
   </div>
@@ -42,7 +42,7 @@
       </div>
     </li>
   </ul>
-  <audio autoplay="autoplay" controls="controls" loop="loop" preload="auto" style="display: none;" src="images/BangBang.mp3">
+  <audio id='audio' autoplay="autoplay" controls="controls" loop="loop" preload="auto" style="display: none;" src="images/BangBang.mp3">
     你的浏览器不支持audio标签
   </audio>
   <script>
@@ -59,6 +59,19 @@
       image.crossOrigin = 'anonymous';
       image.src = 'http://i.imgur.com/VuX2Nf0.jpg';
     }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    audioAutoPlay();
+});
   </script>
 </body>
 
