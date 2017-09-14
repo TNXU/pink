@@ -1,30 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <meta name="apple-mobile-web-app-capable" content="yes"/>
-   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <meta name='apple-mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-status-bar-style' content='black' />
   <title>嘻哩嘻哩 (゜-゜)つロ 万岁~-xilixili</title>
-  <link rel="shortcut icon" href="images/favicon.ico" />
-  <style>
-    html, body, div {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: #000000;
-    }
-    .music {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 50px;
-      color: #ffffff;
-    }
-  </style>
+  <link rel='shortcut icon' href='images/favicon.ico' />
+  <link rel="stylesheet" href='css/style.css'>
+  <script src='js/rains.js' type='text/javascript'></script>
 </head>
-<body>
-    <div class="music">♫</div>
+
+<body onload="run();" leftmargin=0 topmargin=0 oncontextmenu='return false' ondragstart='return false' onselectstart='return false'
+  onselect='document.selection.empty()' oncopy='document.selection.empty()' onbeforecopy='return false' onmouseup='document.selection.empty()'>
+  <p id='animation'>DEMO DEMO DEMO</p>
+  <img id="background" alt="background" src="" />
+  <div id="canvasHolder">
+    <canvas id="canvas"></canvas>
+  </div>
+  <ul class="cb-slideshow">
+    <li><span>Image 01</span>
+      <div>
+        <h3>Paradise</h3>
+      </div>
+    </li>
+    <li><span>Image 02</span>
+      <div>
+        <h3>Fantastic</h3>
+      </div>
+    </li>
+    <li><span>Image 03</span>
+      <div>
+        <h3>Destiny</h3>
+      </div>
+    </li>
+    <li><span>Image 04</span>
+      <div>
+        <h3>Tranquillity</h3>
+      </div>
+    </li>
+  </ul>
+  <audio autoplay="autoplay" controls="controls" loop="loop" preload="auto" style="display: none;" src="images/BangBang.mp3">
+    你的浏览器不支持audio标签
+  </audio>
+  <script>
+    function run() {
+      var image = document.getElementById('background');
+      image.onload = function () {
+        var engine = new RainyDay({
+          image: this,
+          crop: [50, 50, 600, 400]
+        }, document.getElementById('canvas'));
+        engine.trail = engine.TRAIL_SMUDGE;
+        engine.rain([[3, 3, 0.1]], 33);
+      };
+      image.crossOrigin = 'anonymous';
+      image.src = 'http://i.imgur.com/VuX2Nf0.jpg';
+    }
+  </script>
 </body>
+
 </html>
